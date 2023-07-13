@@ -1,20 +1,27 @@
-import React,{useState} from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import Issueitem from './Issueitem';
-
+import { useIssue } from '../../context/IssueContext';
 const ListLayout = styled.div`
 width : 800px;
-height : 200px;
 margin : 0 auto;
 `
-
 export default function Issuelist() {
-  const [lists,setList]= useState([]);
+
+  const issue = useIssue();
+  if(issue === null)
+  {
+    return (<div>Loading...</div>);
+  }
   return (
     <ListLayout>
       {
-        lists.map( (list) =>(
-          <Issueitem/>
+        issue.map( (item,id) =>(
+          <Issueitem
+          key={id}
+          id={id}
+          issueItem={item}
+          />
           ))
       }
 
