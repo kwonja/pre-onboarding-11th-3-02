@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import { Issue } from '../../interface/issue';
 import styled from 'styled-components';
 import Ad from '../ad/AdImage'
@@ -27,23 +27,23 @@ interface issueItem{
   issueItem : Issue
 }
 const Issueitem :  React.FC<issueItem> = ({
-  issueItem : {number,title,comments,created_at,updated_at,user},
+  issueItem : {number,title,comments,created_at,updated_at,user,state},
   issueItem,
   id
 }) =>{
-
   return (
     <>
     <IssueLayout>
     <LeftLayout>
-    <Link to ={`/issue/detail/${number}`}>#{number} title : {title}</Link> 
-    <div>작성자 : {user.login} , 작성일 : {created_at.split("T")[0]} 수정일 : {updated_at.split("T")[0]}</div>
+    <div><Link to ={`/issue/detail/${number}`}>#{number} title : {title}</Link></div>
+    <br/> 
+    <div>작성자 : {user.login} , 작성일 : {created_at.split("T")[0]} 수정일 : {updated_at.split("T")[0]} 상태 : {state}</div>
     </LeftLayout>
     <RightLayout>
     <div>코멘트 : {comments}</div>
     </RightLayout>
     </IssueLayout>
-    { id === 4 && <Ad/>}
+    { id % 5 === 4 && <Ad/>}
     </>
   )
 }

@@ -4,6 +4,10 @@ import { useIssue } from "../../context/IssueContext";
 import { useParams } from "react-router-dom";
 import { GetIssueDetail } from "../../apis/issue";
 import { Issue } from "../../interface/issue";
+const DetailLayout = styled.div`
+width : 800px;
+margin : 0 auto;
+`
 const IssueLayout = styled.div`
 width : 100%;
 display : flex;
@@ -39,7 +43,7 @@ const IssueDetail = () =>{
     return (<div>Loading...</div>);
     }
     return(<>
-    <div>
+    <DetailLayout>
     <img src={issue.user.avatar_url} alt="프로필"/>
     <IssueLayout>
     <LeftLayout>
@@ -50,9 +54,9 @@ const IssueDetail = () =>{
     <div>코멘트 : {issue.comments}</div>
     </RightLayout>
     </IssueLayout>
-    </div>
-
+    <h1>본문</h1>
     <div>{issue.body}</div>
+    </DetailLayout>
 
     </>);
 }

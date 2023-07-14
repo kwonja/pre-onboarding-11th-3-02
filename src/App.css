@@ -1,1 +1,5 @@
-
+a{
+    text-decoration-line: none;
+    color: black;
+    cursor: pointer;
+}

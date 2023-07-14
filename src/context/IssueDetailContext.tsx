@@ -7,8 +7,6 @@ export const IssueDetailContext = ({ children }: { children: ReactNode }) =>{
     const [issue,setIssue]= useState<Issue | null>(null);
     const getIssueDetail = useCallback( async()=>{
         const response = await GetIssueDetail("1");
-        console.log("detail context")
-        console.log(response)
         setIssue(response.data)
     },[])
     useEffect( () =>{
