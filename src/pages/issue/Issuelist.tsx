@@ -1,4 +1,4 @@
-import React,{useState,useRef,useEffect,useCallback} from 'react'
+import React,{useRef,useEffect,useCallback} from 'react'
 import styled from 'styled-components';
 import Issueitem from './Issueitem';
 import { useIssue,useIssueChange } from '../../context/IssueContext';
@@ -11,10 +11,15 @@ width : 800px;
 margin : 0 auto;
 text-align : center;
 `
+type IssueChangeContextType = {
+  SortHandler: (type: string) => void;
+  StateHandler: (type: string) => void;
+  addPage: () => void;
+};
 export default function Issuelist() {
-  const loader = useRef<HTMLDivElement | any>(null);
+  const loader = useRef<HTMLDivElement | null>(null);
   const issue = useIssue();
-  const change = useIssueChange();
+  const {SortHandler,StateHandler,addPage} : any = useIssueChange();
 
 
   // const Callback = () =>{
@@ -27,7 +32,7 @@ export default function Issuelist() {
     console.log( "call observerapi")
     const target = entries[0];
     if (target.isIntersecting) {
-      change?.addPage()
+      addPage()
     }
   }, []);
 
@@ -47,11 +52,11 @@ export default function Issuelist() {
   return ( 
     <>
     <ButtonLayout>
-    <button onClick={ () => change?.SortHandler("comments")}>comments</button>
-    <button onClick={ () => change?.SortHandler("created")}>created</button>
-    <button onClick={ () => change?.StateHandler("open")}>open</button>
-    <button onClick={ () => change?.StateHandler("closed")}>closed</button>
-    <button onClick={ () => change?.StateHandler("all")}>all</button>
+    <button onClick={ () => SortHandler("comments")}>comments</button>
+    <button onClick={ () => SortHandler("created")}>created</button>
+    <button onClick={ () => StateHandler("open")}>open</button>
+    <button onClick={ () => StateHandler("closed")}>closed</button>
+    <button onClick={ () => StateHandler("all")}>all</button>
     </ButtonLayout>
     <ListLayout>
       {

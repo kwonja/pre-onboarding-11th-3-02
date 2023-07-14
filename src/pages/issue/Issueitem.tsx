@@ -1,4 +1,4 @@
-import React,{useRef} from 'react'
+import React from 'react'
 import { Issue } from '../../interface/issue';
 import styled from 'styled-components';
 import Ad from '../ad/AdImage'

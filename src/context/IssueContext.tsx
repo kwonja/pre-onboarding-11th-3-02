@@ -1,12 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useState,ReactNode,useCallback, useEffect } from "react";
 import { Getissueapi } from "../apis/issue";
 import { Issue } from "../interface/issue";
 type IssueChangeContextType = {
   SortHandler: (type: string) => void;
   StateHandler: (type: string) => void;
-  fetchData : ()=> void;
-  addPage : () =>void;
+  addPage: () => void;
 };
 const ContextIssue = createContext<Issue[] | null>(null);
 const IssueChangeContext = createContext<IssueChangeContextType | null>(null);
@@ -43,10 +41,10 @@ export const IssueContext = ({ children }: { children: ReactNode }) =>{
       useEffect( ()=>{
         console.log(page)
         fetchData()
-      },[page])
+      },[page,fetchData])
     return(
     <ContextIssue.Provider value={lists}>
-      <IssueChangeContext.Provider value ={{SortHandler,StateHandler,fetchData,addPage}}>
+      <IssueChangeContext.Provider value ={{SortHandler,StateHandler,addPage}}>
         {children}
       </IssueChangeContext.Provider>
     </ContextIssue.Provider>
