@@ -2,7 +2,8 @@
 
 ## 프로젝트 소개
 특정 깃헙 레파지토리(‣)의 이슈 목록과 상세 내용을 확인하는 웹 사이트 구축
-
+## 배포링크
+http://wanted-preonboarding-11th-2.s3-website.ap-northeast-2.amazonaws.com/
 ## 실행영상
 ![실행영상](https://github.com/kwonja/pre-onboarding-11th-3-02/assets/42410000/8b3dd1b8-e17a-455c-abec-6cb4a3621f4d)
 
