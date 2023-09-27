@@ -11,9 +11,18 @@ http://wanted-preonboarding-11th-2.s3-website.ap-northeast-2.amazonaws.com/
 23.07.11 ~ 23.07.14
 
 ## 실행방법
+### 윈도우(cmd)
  ```zsh
  cd pre-onboarding-11th-3-02
  $ npm install
+ $ set REACT_APP_GIT_SECRET_TOKEN=개인토근
+ $ npm start
+ ```
+### 우분투
+ ```zsh
+ cd pre-onboarding-11th-3-02
+ $ npm install
+ $ export REACT_APP_GIT_SECRET_TOKEN=개인토근
  $ npm start
  ``` 
 
