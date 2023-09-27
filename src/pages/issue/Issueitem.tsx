@@ -47,4 +47,4 @@ const Issueitem :  React.FC<issueItem> = ({
     </>
   )
 }
-export default Issueitem
+export default React.memo(Issueitem)

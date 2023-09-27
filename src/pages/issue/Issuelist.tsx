@@ -2,6 +2,7 @@ import React,{useRef,useEffect,useCallback} from 'react'
 import styled from 'styled-components';
 import Issueitem from './Issueitem';
 import { useIssue,useIssueChange } from '../../context/IssueContext';
+import { useDetailIssueChange } from '../../context/IssueDetailContext';
 const ListLayout = styled.div`
 width : 800px;
 margin : 0 auto;
@@ -11,21 +12,15 @@ width : 800px;
 margin : 0 auto;
 text-align : center;
 `
-type IssueChangeContextType = {
-  SortHandler: (type: string) => void;
-  StateHandler: (type: string) => void;
-  addPage: () => void;
-};
+const LoadingLayer = styled.div`
+font-size : 50px;
+text-align : center;
+`
 export default function Issuelist() {
   const loader = useRef<HTMLDivElement | null>(null);
   const issue = useIssue();
   const {SortHandler,StateHandler,addPage} : any = useIssueChange();
 
-
-  // const Callback = () =>{
-  //   console.log( "callback" + page)
-  //   change?.fetchData(page);
-  // }
 
   const handleObserver = useCallback((entries : IntersectionObserverEntry[]) => {
     console.log(entries)
@@ -47,7 +42,7 @@ export default function Issuelist() {
 
   if(issue === null)
   {
-    return (<div>Loading...</div>);
+    return (<LoadingLayer>Loading...</LoadingLayer>);
   }
   return ( 
     <>
@@ -69,7 +64,7 @@ export default function Issuelist() {
           ))
       }
     </ListLayout>
-    <div ref={loader}>Loading...</div>
+    <LoadingLayer ref={loader}>Loading...</LoadingLayer>
     </>
   )
 }

@@ -18,7 +18,6 @@ export const IssueContext = ({ children }: { children: ReactNode }) =>{
     const [sort, setSort] = useState("created")
     const [state,setState] = useState("all");
     const [page, setPage] = useState(1);
-    console.log("context")
     console.log(lists)
     const SortHandler =(type : string) =>{
       setSort(type);
@@ -39,9 +38,8 @@ export const IssueContext = ({ children }: { children: ReactNode }) =>{
       },[state,sort,page])
 
       useEffect( ()=>{
-        console.log(page)
         fetchData()
-      },[page,fetchData])
+      },[fetchData])
     return(
     <ContextIssue.Provider value={lists}>
       <IssueChangeContext.Provider value ={{SortHandler,StateHandler,addPage}}>
